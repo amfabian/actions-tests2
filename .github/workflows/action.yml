@@ -16,7 +16,7 @@ jobs:
         cache: maven
 
     - name: Verify
-      run: mvn -B verify
+      run: ./mvnw package -Pnative
 
     - name: Package
       run: ./mvnw package
