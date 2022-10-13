@@ -1,5 +1,5 @@
 name: Package Demo
- run-name: ${{ github.actor }} is testing Package on GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing Package on GitHub Actions 🚀
 on: [push]
 jobs:
   build:
