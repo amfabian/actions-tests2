@@ -18,5 +18,8 @@ jobs:
     - name: Verify
       run: mvn -B verify
 
-    - name: Build
+    - name: Package
       run: ./mvnw package
+
+    - name: Build
+      run: docker build -f src/main/docker/Dockerfile.jvm -t quarkus/actions-tests2-jvm .
