@@ -1,5 +1,5 @@
 name: Package Demo
-run-name: ${{ github.actor }} is testing Package on GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing Build and Push Image on GitHub Actions 🚀
 on: [push]
 jobs:
   build:
@@ -16,14 +16,14 @@ jobs:
         cache: maven
 
     - name: Verify
-      run: ./mvnw package -Pnative
+      run: ./mvnw verify
 
     - name: Package
       run: ./mvnw package
 
     - name: Build & Push Image
       run: |
-        echo "${{ secrets.DOCKERHUB_PS }}" | docker login -u "amfabian" --password-stdin
+        echo "${{ secrets.DOCKERHUB_PS }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
         docker image build -f src/main/docker/Dockerfile.jvm -t amfabian/action-test:latest .
         docker push amfabian/action-test:latest
 
